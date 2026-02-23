@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,21 +9,38 @@
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --cream: #f5f0e8;
-    --dark: #1a1714;
+    --bg: #f7f3ee;
+    --bg2: #ede8e0;
+    --text: #1a1714;
+    --text-soft: #7a756e;
+    --gold: #b8904a;
+    --gold-light: #d4b07a;
+    --border: rgba(26,23,20,0.1);
+    --nav-bg: rgba(247,243,238,0.92);
+    --card-bg: #eee9e0;
+  }
+
+  [data-theme="dark"] {
+    --bg: #111010;
+    --bg2: #1a1918;
+    --text: #f0ece4;
+    --text-soft: #7a756e;
     --gold: #c9a96e;
     --gold-light: #e8d5b0;
-    --gray: #8a8178;
+    --border: rgba(240,236,228,0.08);
+    --nav-bg: rgba(17,16,16,0.92);
+    --card-bg: #1e1c1a;
   }
 
   html { scroll-behavior: smooth; }
 
   body {
-    background: var(--cream);
-    color: var(--dark);
+    background: var(--bg);
+    color: var(--text);
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.03em;
+    transition: background 0.4s ease, color 0.4s ease;
     overflow-x: hidden;
   }
 
@@ -32,341 +49,237 @@
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 100;
-    padding: 2rem 4rem;
+    background: var(--nav-bg);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    padding: 1.4rem 4rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    mix-blend-mode: multiply;
+    transition: background 0.4s ease, border-color 0.4s ease;
   }
 
   .nav-logo {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 300;
-    letter-spacing: 0.3em;
-    color: var(--dark);
+    letter-spacing: 0.35em;
+    color: var(--text);
     text-decoration: none;
+    transition: color 0.3s;
   }
 
-  .nav-links {
+  .nav-center {
     display: flex;
     gap: 3rem;
     list-style: none;
   }
 
-  .nav-links a {
-    font-size: 0.65rem;
+  .nav-center a {
+    font-size: 0.6rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--dark);
+    color: var(--text-soft);
     text-decoration: none;
-    opacity: 0.6;
-    transition: opacity 0.3s;
+    transition: color 0.3s;
   }
 
-  .nav-links a:hover { opacity: 1; }
+  .nav-center a:hover { color: var(--gold); }
+
+  /* THEME TOGGLE */
+  .theme-toggle {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    transition: all 0.3s;
+  }
+
+  .theme-toggle:hover { border-color: var(--gold); color: var(--gold); }
+
+  .toggle-icon { font-size: 0.85rem; }
 
   /* HERO */
   .hero {
     height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     position: relative;
     overflow: hidden;
+    display: flex;
+    align-items: flex-end;
   }
 
-  .hero-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 0 4rem 8rem 4rem;
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    filter: brightness(0.72);
+    transition: filter 0.5s;
+  }
+
+  [data-theme="dark"] .hero-img { filter: brightness(0.45); }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 55%);
+  }
+
+  .hero-content {
+    position: relative;
+    padding: 0 4rem 7rem;
+    max-width: 600px;
   }
 
   .hero-eyebrow {
-    font-size: 0.6rem;
-    letter-spacing: 0.3em;
+    font-size: 0.55rem;
+    letter-spacing: 0.35em;
     text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1.5rem;
+    color: var(--gold-light);
+    margin-bottom: 1.2rem;
     opacity: 0;
     animation: fadeUp 1s 0.3s forwards;
   }
 
   .hero-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(4rem, 8vw, 7rem);
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
     font-weight: 300;
-    line-height: 1;
-    letter-spacing: -0.01em;
+    line-height: 1.05;
+    color: #fff;
     opacity: 0;
     animation: fadeUp 1s 0.5s forwards;
   }
 
-  .hero-title em {
-    font-style: italic;
-    color: var(--gold);
-  }
+  .hero-title em { font-style: italic; color: var(--gold-light); }
 
   .hero-sub {
-    margin-top: 2rem;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    color: var(--gray);
-    max-width: 280px;
+    margin-top: 1.5rem;
+    font-size: 0.72rem;
     line-height: 2;
+    color: rgba(255,255,255,0.62);
+    max-width: 320px;
     opacity: 0;
     animation: fadeUp 1s 0.7s forwards;
   }
 
   .hero-cta {
-    margin-top: 3rem;
+    margin-top: 2.5rem;
     display: inline-block;
-    font-size: 0.6rem;
+    font-size: 0.58rem;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--dark);
+    color: #fff;
     text-decoration: none;
-    border-bottom: 1px solid var(--gold);
+    border-bottom: 1px solid var(--gold-light);
     padding-bottom: 4px;
     opacity: 0;
     animation: fadeUp 1s 0.9s forwards;
-    transition: color 0.3s, border-color 0.3s;
+    transition: color 0.3s;
   }
 
-  .hero-cta:hover { color: var(--gold); }
+  .hero-cta:hover { color: var(--gold-light); }
 
-  .hero-right {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-bg {
+  .hero-scroll {
     position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse at 60% 40%, #e8d5b055 0%, transparent 60%),
-      linear-gradient(135deg, #e8d5b0 0%, #d4b896 40%, #c9a96e 100%);
-  }
-
-  .hero-shape {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 55%;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    border: 1px solid rgba(201,169,110,0.3);
-    animation: pulse 4s ease-in-out infinite;
-  }
-
-  .hero-shape::before {
-    content: '';
-    position: absolute;
-    inset: 15%;
-    border-radius: 50%;
-    border: 1px solid rgba(201,169,110,0.5);
-    animation: pulse 4s ease-in-out 1s infinite;
-  }
-
-  .hero-shape::after {
-    content: '';
-    position: absolute;
-    inset: 30%;
-    border-radius: 50%;
-    background: radial-gradient(circle, #c9a96e 0%, #a0824a 100%);
-    box-shadow: 0 20px 80px rgba(161,130,70,0.4);
-  }
-
-  .hero-number {
-    position: absolute;
-    bottom: 8rem;
+    bottom: 3rem;
     right: 4rem;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 10rem;
-    font-weight: 300;
-    color: rgba(201,169,110,0.15);
-    line-height: 1;
-    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.48rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    opacity: 0;
+    animation: fadeUp 1s 1.2s forwards;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 3rem;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.35), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
   }
 
   /* MARQUEE */
   .marquee-wrap {
-    background: var(--dark);
-    padding: 1.2rem 0;
+    background: var(--gold);
+    padding: 0.85rem 0;
     overflow: hidden;
     white-space: nowrap;
   }
 
   .marquee-track {
     display: inline-flex;
-    animation: marquee 20s linear infinite;
+    animation: marquee 25s linear infinite;
   }
 
   .marquee-item {
-    font-size: 0.6rem;
-    letter-spacing: 0.3em;
+    font-size: 0.52rem;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--gold-light);
-    padding: 0 3rem;
-    opacity: 0.7;
+    color: rgba(255,255,255,0.82);
+    padding: 0 2.5rem;
   }
 
-  .marquee-dot {
-    color: var(--gold);
-    opacity: 1;
-  }
+  .marquee-dot { color: rgba(255,255,255,0.38); }
 
-  /* ABOUT */
-  .about {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 80vh;
-    align-items: center;
-  }
-
-  .about-left {
-    padding: 8rem 4rem 8rem 4rem;
-  }
-
+  /* SECTION LABEL */
   .section-label {
-    font-size: 0.55rem;
+    font-size: 0.5rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: var(--gold);
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.8rem;
   }
 
   .section-label::before {
     content: '';
     display: block;
-    width: 2rem;
+    width: 1.5rem;
     height: 1px;
     background: var(--gold);
   }
 
-  .about-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.6rem, 3vw, 2.4rem);
-    font-weight: 300;
-    line-height: 1.5;
-    color: var(--dark);
-  }
-
-  .about-text em { color: var(--gold); font-style: italic; }
-
-  .about-body {
-    margin-top: 2.5rem;
-    font-size: 0.75rem;
-    line-height: 2.2;
-    color: var(--gray);
-    max-width: 360px;
-  }
-
-  .about-right {
-    background: var(--dark);
-    height: 100%;
-    min-height: 80vh;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .about-visual {
-    position: relative;
-    width: 260px;
-    height: 260px;
-  }
-
-  .ring-outer {
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    border: 1px solid rgba(201,169,110,0.2);
-    animation: spin 20s linear infinite;
-  }
-
-  .ring-outer::before {
-    content: '';
-    position: absolute;
-    width: 8px; height: 8px;
-    background: var(--gold);
-    border-radius: 50%;
-    top: -4px; left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .ring-mid {
-    position: absolute;
-    inset: 30px;
-    border-radius: 50%;
-    border: 1px solid rgba(201,169,110,0.35);
-    animation: spin 15s linear infinite reverse;
-  }
-
-  .ring-inner {
-    position: absolute;
-    inset: 70px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 40% 35%, #c9a96e, #8a6435);
-    box-shadow:
-      0 0 40px rgba(201,169,110,0.3),
-      inset 0 -10px 30px rgba(0,0,0,0.3);
-  }
-
-  .about-stats {
-    position: absolute;
-    bottom: 4rem;
-    left: 4rem;
-    right: 4rem;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .stat { text-align: center; }
-
-  .stat-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
-    font-weight: 300;
-    color: var(--gold);
-    display: block;
-  }
-
-  .stat-label {
-    font-size: 0.5rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
-    margin-top: 0.3rem;
-  }
-
   /* COLLECTION */
   .collection {
-    padding: 8rem 4rem;
+    padding: 7rem 4rem;
+    background: var(--bg);
+    transition: background 0.4s;
   }
 
   .collection-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: 5rem;
+    margin-bottom: 4rem;
   }
 
   .section-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-size: clamp(2rem, 3.5vw, 3rem);
     font-weight: 300;
     line-height: 1.1;
   }
 
   .collection-link {
-    font-size: 0.6rem;
+    font-size: 0.55rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--gold);
@@ -381,172 +294,372 @@
   .products {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
+    gap: 1.5rem;
   }
 
-  .product-card {
+  .product-card { cursor: pointer; }
+
+  .product-img-wrap {
     position: relative;
     overflow: hidden;
-    cursor: pointer;
-  }
-
-  .product-visual {
     aspect-ratio: 3/4;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    background: var(--card-bg);
+    transition: background 0.4s;
   }
 
-  .product-card:hover .product-visual { transform: scale(1.03); }
+  .product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
 
-  .product-bg {
+  .product-card:hover .product-img { transform: scale(1.06); }
+
+  .product-tag {
     position: absolute;
-    inset: 0;
-  }
-
-  .product-bg-1 { background: linear-gradient(160deg, #e8d5b0, #c9a96e 60%, #a07840); }
-  .product-bg-2 { background: linear-gradient(160deg, #d4c4b0, #b8a090 60%, #8a7060); }
-  .product-bg-3 { background: linear-gradient(160deg, #1a1714, #2d2825 60%, #3d3530); }
-
-  .product-gem {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -60%);
-    width: 80px;
-    height: 80px;
-  }
-
-  .gem-diamond {
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, #fff 0%, #e8d5b0 40%, #c9a96e 100%);
-    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
-    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-  }
-
-  .gem-circle {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #c0b0a0 0%, #a09080 50%, #d0c0b0 100%);
-    box-shadow: 0 10px 40px rgba(0,0,0,0.3), inset 0 -5px 15px rgba(0,0,0,0.2);
-  }
-
-  .gem-square {
-    width: 70px;
-    height: 70px;
-    background: linear-gradient(135deg, #c9a96e 0%, #e8d5b0 50%, #c9a96e 100%);
-    transform: rotate(45deg);
-    box-shadow: 0 10px 40px rgba(201,169,110,0.4);
-    margin: 5px;
+    top: 1rem;
+    left: 1rem;
+    font-size: 0.45rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: var(--gold);
+    color: #fff;
+    padding: 0.3rem 0.7rem;
   }
 
   .product-info {
-    padding: 1.5rem 0;
+    padding: 1.2rem 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
   }
 
   .product-name {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     font-weight: 300;
-    margin-bottom: 0.3rem;
   }
 
   .product-type {
-    font-size: 0.55rem;
-    letter-spacing: 0.2em;
+    font-size: 0.48rem;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--gray);
-    margin-bottom: 0.8rem;
+    color: var(--text-soft);
+    margin-bottom: 0.3rem;
   }
 
   .product-price {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: var(--gold);
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
   }
 
-  /* PHILOSOPHY */
-  .philosophy {
-    background: var(--dark);
-    padding: 8rem 4rem;
-    text-align: center;
+  /* ABOUT */
+  .about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 75vh;
+  }
+
+  .about-img-wrap {
     position: relative;
     overflow: hidden;
   }
 
-  .philosophy::before {
-    content: 'NOVA';
+  .about-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .about-img-wrap:hover .about-img { transform: scale(1.04); }
+
+  .about-content {
+    padding: 6rem 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--bg2);
+    transition: background 0.4s;
+  }
+
+  .about-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 300;
+    line-height: 1.3;
+    margin-bottom: 2rem;
+  }
+
+  .about-title em { font-style: italic; color: var(--gold); }
+
+  .about-body {
+    font-size: 0.72rem;
+    line-height: 2.2;
+    color: var(--text-soft);
+    max-width: 380px;
+  }
+
+  .about-stats {
+    margin-top: 3rem;
+    display: flex;
+    gap: 3rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .stat-label {
+    font-size: 0.48rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+  }
+
+  /* COMING SOON */
+  .coming-soon {
+    background: var(--bg2);
+    padding: 7rem 4rem;
+    transition: background 0.4s;
+  }
+
+  .coming-soon-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .cs-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+
+  .cs-title em { font-style: italic; color: var(--gold); }
+
+  .cs-body {
+    font-size: 0.72rem;
+    line-height: 2;
+    color: var(--text-soft);
+    max-width: 360px;
+    margin-bottom: 2.5rem;
+  }
+
+  .countdown {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .countdown-block { text-align: center; }
+
+  .countdown-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.6rem;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+  }
+
+  .countdown-unit {
+    font-size: 0.44rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-top: 0.4rem;
+    display: block;
+  }
+
+  .countdown-sep {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.6rem;
+    color: var(--border);
+    line-height: 1;
+  }
+
+  .notify-label {
+    font-size: 0.52rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 0.8rem;
+  }
+
+  .notify-form {
+    display: flex;
+    border-bottom: 1px solid var(--border);
+    max-width: 360px;
+    transition: border-color 0.3s;
+  }
+
+  .notify-form:focus-within { border-color: var(--gold); }
+
+  .notify-input {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: var(--text);
+    padding: 0.6rem 0;
+  }
+
+  .notify-input::placeholder { color: var(--text-soft); }
+
+  .notify-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 0.6rem 0 0.6rem 1rem;
+    transition: opacity 0.3s;
+  }
+
+  .notify-btn:hover { opacity: 0.6; }
+
+  /* preview */
+  .cs-preview {
+    position: relative;
+    height: 520px;
+  }
+
+  .cs-img-main {
+    position: absolute;
+    right: 0; top: 0;
+    width: 76%;
+    height: 80%;
+    object-fit: cover;
+    filter: blur(9px) brightness(0.65);
+  }
+
+  .cs-img-small {
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 50%;
+    height: 55%;
+    object-fit: cover;
+    filter: blur(11px) brightness(0.55);
+  }
+
+  .cs-lock {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20vw;
-    font-weight: 300;
-    color: rgba(201,169,110,0.04);
-    white-space: nowrap;
-    pointer-events: none;
+    text-align: center;
+    z-index: 2;
   }
 
-  .philosophy-quote {
-    position: relative;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.8rem, 3.5vw, 3rem);
-    font-weight: 300;
-    font-style: italic;
-    color: var(--cream);
-    line-height: 1.4;
-    max-width: 700px;
-    margin: 0 auto 3rem;
-  }
-
-  .philosophy-quote::before {
-    content: '"';
+  .cs-lock-icon {
+    font-size: 2rem;
     color: var(--gold);
-    font-size: 6rem;
-    position: absolute;
-    top: -2rem;
-    left: -3rem;
-    line-height: 1;
-    opacity: 0.5;
+    margin-bottom: 0.6rem;
+    display: block;
   }
 
-  .philosophy-author {
-    font-size: 0.6rem;
+  .cs-lock-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    color: #fff;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.4rem;
+  }
+
+  .cs-lock-date {
+    font-size: 0.48rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--gold-light);
+  }
+
+  /* QUOTE */
+  .quote-section {
+    padding: 7rem 4rem;
+    text-align: center;
+    background: var(--bg);
+    transition: background 0.4s;
+  }
+
+  .quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.6rem, 3vw, 2.8rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.5;
+    max-width: 640px;
+    margin: 0 auto 1.5rem;
+  }
+
+  .quote-text::before { content: '\201C'; color: var(--gold); }
+  .quote-text::after  { content: '\201D'; color: var(--gold); }
+
+  .quote-author {
+    font-size: 0.52rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-soft);
   }
 
   /* FOOTER */
   footer {
-    padding: 4rem;
+    border-top: 1px solid var(--border);
+    padding: 4rem 4rem 2.5rem;
+    background: var(--bg);
+    transition: all 0.4s;
+  }
+
+  .footer-top {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-items: start;
-    gap: 3rem;
-    border-top: 1px solid rgba(26,23,20,0.1);
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
   }
 
   .footer-brand {
     font-family: 'Cormorant Garamond', serif;
     font-size: 2rem;
     font-weight: 300;
-    letter-spacing: 0.2em;
-    margin-bottom: 1rem;
+    letter-spacing: 0.25em;
+    margin-bottom: 0.7rem;
   }
 
   .footer-tagline {
-    font-size: 0.6rem;
+    font-size: 0.55rem;
     letter-spacing: 0.15em;
-    color: var(--gray);
     text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 1.5rem;
   }
 
   .footer-col-title {
-    font-size: 0.55rem;
+    font-size: 0.48rem;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--gold);
@@ -554,58 +667,52 @@
   }
 
   .footer-links { list-style: none; }
-  .footer-links li { margin-bottom: 0.8rem; }
+
+  .footer-links li { margin-bottom: 0.75rem; }
+
   .footer-links a {
-    font-size: 0.7rem;
-    color: var(--gray);
+    font-size: 0.65rem;
+    color: var(--text-soft);
     text-decoration: none;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
     transition: color 0.3s;
   }
 
-  .footer-links a:hover { color: var(--dark); }
+  .footer-links a:hover { color: var(--gold); }
 
-  .footer-copy {
-    grid-column: 1 / -1;
-    border-top: 1px solid rgba(26,23,20,0.08);
+  .footer-bottom {
+    border-top: 1px solid var(--border);
     padding-top: 2rem;
     display: flex;
     justify-content: space-between;
-    align-items: center;
   }
 
-  .footer-copy-text {
-    font-size: 0.55rem;
+  .footer-copy {
+    font-size: 0.48rem;
     letter-spacing: 0.1em;
-    color: var(--gray);
     text-transform: uppercase;
+    color: var(--text-soft);
   }
 
   /* ANIMATIONS */
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes pulse {
-    0%, 100% { transform: translate(-50%, -50%) scale(1); }
-    50% { transform: translate(-50%, -50%) scale(1.05); }
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   @keyframes marquee {
     from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    to   { transform: translateX(-50%); }
   }
 
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.35; }
+    50%       { opacity: 1; }
   }
 
-  /* SCROLL FADE */
   .reveal {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(24px);
     transition: opacity 0.8s ease, transform 0.8s ease;
   }
 
@@ -613,180 +720,294 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  @media (max-width: 768px) {
+    nav { padding: 1.2rem 1.5rem; }
+    .nav-center { display: none; }
+    .hero-content { padding: 0 1.5rem 5rem; }
+    .about { grid-template-columns: 1fr; }
+    .about-img-wrap { min-height: 50vw; }
+    .about-content { padding: 3rem 1.5rem; }
+    .products { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .coming-soon-inner { grid-template-columns: 1fr; }
+    .cs-preview { height: 280px; }
+    .collection, .coming-soon, .quote-section { padding: 4rem 1.5rem; }
+    .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+    footer { padding: 3rem 1.5rem 2rem; }
+  }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">NOVA</a>
-  <ul class="nav-links">
+  <ul class="nav-center">
     <li><a href="#collection">Collection</a></li>
+    <li><a href="#prochaine">Prochaine</a></li>
     <li><a href="#about">Maison</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <button class="theme-toggle" id="themeToggle" aria-label="Changer le thème">
+    <span class="toggle-icon" id="toggleIcon">☽</span>
+    <span id="toggleLabel">Nuit</span>
+  </button>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-left">
-    <p class="hero-eyebrow">Bijoux · Artisanaux · Paris</p>
-    <h1 class="hero-title">L'éclat<br><em>subtil</em><br>de l'or.</h1>
-    <p class="hero-sub">Chaque pièce NOVA naît d'un geste précis, d'une matière rare, d'un silence que le métal apprend à tenir.</p>
+  <img class="hero-img"
+    src="https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=1800&auto=format&fit=crop&q=80"
+    alt="NOVA Bijoux hero" />
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Maison NOVA · Paris · Depuis 2018</p>
+    <h1 class="hero-title">L'essentiel,<br><em>sublimé.</em></h1>
+    <p class="hero-sub">Des bijoux conçus pour durer. Taillés dans l'or, forgés dans le silence, portés pour toujours.</p>
     <a href="#collection" class="hero-cta">Découvrir la collection</a>
   </div>
-  <div class="hero-right">
-    <div class="hero-bg"></div>
-    <div class="hero-shape"></div>
-    <span class="hero-number">01</span>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Défiler</span>
   </div>
 </section>
 
 <!-- MARQUEE -->
 <div class="marquee-wrap">
   <div class="marquee-track">
-    <span class="marquee-item">Or 18 carats</span>
-    <span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">Artisanat Parisien</span>
-    <span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">Pierres Précieuses</span>
-    <span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">Pièces Uniques</span>
-    <span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">NOVA Maison de Bijoux</span>
-    <span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">Or 18 carats</span>
-    <span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">Artisanat Parisien</span>
-    <span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">Pierres Précieuses</span>
-    <span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">Pièces Uniques</span>
-    <span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">NOVA Maison de Bijoux</span>
-    <span class="marquee-item marquee-dot">·</span>
+    <span class="marquee-item">Or 18 carats</span><span class="marquee-item marquee-dot">·</span>
+    <span class="marquee-item">Artisanat Parisien</span><span class="marquee-item marquee-dot">·</span>
+    <span class="marquee-item">Pierres naturelles</span><span class="marquee-item marquee-dot">·</span>
+    <span class="marquee-item">Pièces Uniques</span><span class="marquee-item marquee-dot">·</span>
+    <span class="marquee-item">Livraison mondiale</span><span class="marquee-item marquee-dot">·</span>
+    <span class="marquee-item">Or 18 carats</span><span class="marquee-item marquee-dot">·</span>
+    <span class="marquee-item">Artisanat Parisien</span><span class="marquee-item marquee-dot">·</span>
+    <span class="marquee-item">Pierres naturelles</span><span class="marquee-item marquee-dot">·</span>
+    <span class="marquee-item">Pièces Uniques</span><span class="marquee-item marquee-dot">·</span>
+    <span class="marquee-item">Livraison mondiale</span><span class="marquee-item marquee-dot">·</span>
   </div>
 </div>
-
-<!-- ABOUT -->
-<section class="about" id="about">
-  <div class="about-left reveal">
-    <span class="section-label">Notre philosophie</span>
-    <p class="about-text">La beauté naît dans le <em>détail</em> que l'on ne remarque qu'au troisième regard.</p>
-    <p class="about-body">NOVA est une maison de bijoux indépendante fondée à Paris. Chaque création est pensée comme un objet de transmission — sobre, durable, et porteur d'une lumière propre. Nous travaillons en petite série avec des orfèvres sélectionnés pour leur rigueur et leur sensibilité.</p>
-  </div>
-  <div class="about-right">
-    <div class="about-visual">
-      <div class="ring-outer"></div>
-      <div class="ring-mid"></div>
-      <div class="ring-inner"></div>
-    </div>
-    <div class="about-stats">
-      <div class="stat">
-        <span class="stat-num">18k</span>
-        <span class="stat-label">Or pur</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">100%</span>
-        <span class="stat-label">Artisanal</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">∞</span>
-        <span class="stat-label">Pièces uniques</span>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- COLLECTION -->
 <section class="collection" id="collection">
   <div class="collection-header reveal">
     <div>
-      <span class="section-label">Saison 2025</span>
-      <h2 class="section-title">La Collection<br><em style="font-style:italic;font-family:'Cormorant Garamond',serif">Céleste</em></h2>
+      <span class="section-label">Collection 2025</span>
+      <h2 class="section-title">Céleste</h2>
     </div>
     <a href="#" class="collection-link">Voir tout</a>
   </div>
   <div class="products">
     <div class="product-card reveal">
-      <div class="product-visual">
-        <div class="product-bg product-bg-1"></div>
-        <div class="product-gem"><div class="gem-diamond"></div></div>
+      <div class="product-img-wrap">
+        <img class="product-img"
+          src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&auto=format&fit=crop&q=80"
+          alt="Bague Étoile Solitaire" />
+        <span class="product-tag">Nouveau</span>
       </div>
       <div class="product-info">
-        <p class="product-type">Bague</p>
-        <h3 class="product-name">Étoile Solitaire</h3>
-        <p class="product-price">1 850 €</p>
+        <div>
+          <p class="product-type">Bague</p>
+          <h3 class="product-name">Étoile Solitaire</h3>
+        </div>
+        <span class="product-price">1 850 €</span>
       </div>
     </div>
-    <div class="product-card reveal" style="transition-delay:0.1s">
-      <div class="product-visual">
-        <div class="product-bg product-bg-2"></div>
-        <div class="product-gem"><div class="gem-circle"></div></div>
+    <div class="product-card reveal" style="transition-delay:.1s">
+      <div class="product-img-wrap">
+        <img class="product-img"
+          src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&auto=format&fit=crop&q=80"
+          alt="Collier Lune d'Albâtre" />
       </div>
       <div class="product-info">
-        <p class="product-type">Collier</p>
-        <h3 class="product-name">Lune d'Albâtre</h3>
-        <p class="product-price">2 400 €</p>
+        <div>
+          <p class="product-type">Collier</p>
+          <h3 class="product-name">Lune d'Albâtre</h3>
+        </div>
+        <span class="product-price">2 400 €</span>
       </div>
     </div>
-    <div class="product-card reveal" style="transition-delay:0.2s">
-      <div class="product-visual">
-        <div class="product-bg product-bg-3"></div>
-        <div class="product-gem"><div class="gem-square"></div></div>
+    <div class="product-card reveal" style="transition-delay:.2s">
+      <div class="product-img-wrap">
+        <img class="product-img"
+          src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=800&auto=format&fit=crop&q=80"
+          alt="Bracelet Solstice d'Or" />
       </div>
       <div class="product-info">
-        <p class="product-type">Bracelet</p>
-        <h3 class="product-name">Solstice d'Or</h3>
-        <p class="product-price">3 200 €</p>
+        <div>
+          <p class="product-type">Bracelet</p>
+          <h3 class="product-name">Solstice d'Or</h3>
+        </div>
+        <span class="product-price">3 200 €</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PHILOSOPHY -->
-<section class="philosophy">
-  <p class="philosophy-quote">Porter un bijou NOVA, c'est choisir l'essentiel contre le superflu — la lumière contre le bruit.</p>
-  <span class="philosophy-author">NOVA — Maison de Bijoux, Paris</span>
+<!-- COMING SOON -->
+<section class="coming-soon" id="prochaine">
+  <div class="coming-soon-inner">
+    <div class="reveal">
+      <span class="section-label">Prochaine collection</span>
+      <h2 class="cs-title"><em>Aurore</em><br>arrive bientôt.</h2>
+      <p class="cs-body">Notre prochaine collection s'inspire de la lumière à l'aube — entre ombre et clarté. Une série de 12 pièces exclusives, réalisées à la main dans notre atelier parisien.</p>
+      <div class="countdown">
+        <div class="countdown-block">
+          <span class="countdown-num" id="cd-days">--</span>
+          <span class="countdown-unit">Jours</span>
+        </div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-block">
+          <span class="countdown-num" id="cd-hours">--</span>
+          <span class="countdown-unit">Heures</span>
+        </div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-block">
+          <span class="countdown-num" id="cd-min">--</span>
+          <span class="countdown-unit">Min</span>
+        </div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-block">
+          <span class="countdown-num" id="cd-sec">--</span>
+          <span class="countdown-unit">Sec</span>
+        </div>
+      </div>
+      <p class="notify-label">Être informé en avant-première</p>
+      <div class="notify-form">
+        <input class="notify-input" type="email" placeholder="Votre adresse e-mail" />
+        <button class="notify-btn">Notifier →</button>
+      </div>
+    </div>
+    <div class="cs-preview reveal" style="transition-delay:.15s">
+      <img class="cs-img-main"
+        src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&auto=format&fit=crop&q=80"
+        alt="Aperçu Aurore" />
+      <img class="cs-img-small"
+        src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&auto=format&fit=crop&q=80"
+        alt="Aperçu Aurore 2" />
+      <div class="cs-lock">
+        <span class="cs-lock-icon">◈</span>
+        <div class="cs-lock-text">Collection Aurore</div>
+        <div class="cs-lock-date">Automne 2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-img-wrap">
+    <img class="about-img"
+      src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=1000&auto=format&fit=crop&q=80"
+      alt="Atelier NOVA" />
+  </div>
+  <div class="about-content reveal">
+    <span class="section-label">Notre Maison</span>
+    <h2 class="about-title">Née d'une passion<br>pour l'<em>essentiel.</em></h2>
+    <p class="about-body">NOVA est une maison de bijoux indépendante fondée à Paris. Chaque création est pensée comme un objet de transmission — sobre, durable, porteur d'une lumière propre. Nous travaillons en petite série avec des orfèvres sélectionnés pour leur rigueur et leur sensibilité.</p>
+    <div class="about-stats">
+      <div>
+        <span class="stat-num">18k</span>
+        <span class="stat-label">Or certifié</span>
+      </div>
+      <div>
+        <span class="stat-num">7</span>
+        <span class="stat-label">Ans d'existence</span>
+      </div>
+      <div>
+        <span class="stat-num">100%</span>
+        <span class="stat-label">Artisanal</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <p class="quote-text reveal">Porter un bijou NOVA, c'est choisir l'essentiel contre le superflu.</p>
+  <span class="quote-author reveal" style="transition-delay:.1s">NOVA — Maison de Bijoux, Paris</span>
 </section>
 
 <!-- FOOTER -->
 <footer id="contact">
-  <div class="footer-brand-col">
-    <div class="footer-brand">NOVA</div>
-    <p class="footer-tagline">Maison de bijoux · Paris</p>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">NOVA</div>
+      <p class="footer-tagline">Maison de bijoux · Paris</p>
+      <p style="font-size:0.62rem;line-height:1.9;color:var(--text-soft);max-width:240px;">12 Rue de la Paix, 75002 Paris<br>Mar – Sam, 10h – 19h</p>
+    </div>
+    <div>
+      <p class="footer-col-title">Navigation</p>
+      <ul class="footer-links">
+        <li><a href="#">Collection Céleste</a></li>
+        <li><a href="#">Sur-mesure</a></li>
+        <li><a href="#">La Maison</a></li>
+        <li><a href="#">Presse</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Contact</p>
+      <ul class="footer-links">
+        <li><a href="mailto:contact@nova-bijoux.fr">contact@nova-bijoux.fr</a></li>
+        <li><a href="#">+33 1 42 00 00 00</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Prendre rendez-vous</a></li>
+      </ul>
+    </div>
   </div>
-  <div>
-    <p class="footer-col-title">Navigation</p>
-    <ul class="footer-links">
-      <li><a href="#">Collection</a></li>
-      <li><a href="#">Sur-mesure</a></li>
-      <li><a href="#">La maison</a></li>
-      <li><a href="#">Presse</a></li>
-    </ul>
-  </div>
-  <div>
-    <p class="footer-col-title">Contact</p>
-    <ul class="footer-links">
-      <li><a href="mailto:contact@nova-bijoux.fr">contact@nova-bijoux.fr</a></li>
-      <li><a href="#">+33 1 42 00 00 00</a></li>
-      <li><a href="#">Instagram</a></li>
-      <li><a href="#">Prise de rendez-vous</a></li>
-    </ul>
-  </div>
-  <div class="footer-copy">
-    <span class="footer-copy-text">© 2025 NOVA. Tous droits réservés.</span>
-    <span class="footer-copy-text">Fait avec soin — Paris, France</span>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 NOVA. Tous droits réservés.</span>
+    <span class="footer-copy">Fait avec soin — Paris, France</span>
   </div>
 </footer>
 
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) e.target.classList.add('visible');
-    });
-  }, { threshold: 0.1 });
+  // THEME TOGGLE
+  const html = document.documentElement;
+  const btn = document.getElementById('themeToggle');
+  const icon = document.getElementById('toggleIcon');
+  const label = document.getElementById('toggleLabel');
 
+  btn.addEventListener('click', () => {
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    icon.textContent = isDark ? '☽' : '☀';
+    label.textContent = isDark ? 'Nuit' : 'Jour';
+  });
+
+  // SCROLL REVEAL
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // COUNTDOWN — target: 1er octobre 2025
+  const target = new Date('2025-10-01T00:00:00');
+
+  function tick() {
+    const diff = target - Date.now();
+    if (diff <= 0) {
+      ['cd-days','cd-hours','cd-min','cd-sec'].forEach(id => document.getElementById(id).textContent = '00');
+      return;
+    }
+    const pad = n => String(n).padStart(2,'0');
+    document.getElementById('cd-days').textContent  = pad(Math.floor(diff / 86400000));
+    document.getElementById('cd-hours').textContent = pad(Math.floor(diff % 86400000 / 3600000));
+    document.getElementById('cd-min').textContent   = pad(Math.floor(diff % 3600000 / 60000));
+    document.getElementById('cd-sec').textContent   = pad(Math.floor(diff % 60000 / 1000));
+  }
+
+  tick();
+  setInterval(tick, 1000);
+
+  // NOTIFY FORM
+  document.querySelector('.notify-btn').addEventListener('click', () => {
+    const input = document.querySelector('.notify-input');
+    if (input.value && input.value.includes('@')) {
+      input.value = '';
+      input.placeholder = 'Merci ! Vous serez informé en avant-première.';
+    }
+  });
 </script>
 </body>
 </html>
