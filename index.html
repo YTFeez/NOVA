@@ -19,7 +19,6 @@
   --nav-bg: rgba(247,243,238,0.92);
   --card-bg: #eee9e0;
 }
-
 [data-theme="dark"] {
   --bg: #111010;
   --bg2: #1a1918;
@@ -31,9 +30,7 @@
   --nav-bg: rgba(17,16,16,0.92);
   --card-bg: #1e1c1a;
 }
-
 html { scroll-behavior: smooth; }
-
 body {
   background: var(--bg);
   color: var(--text);
@@ -44,7 +41,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ── NAV ── */
+/* NAV */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -58,7 +55,6 @@ nav {
   align-items: center;
   transition: background 0.4s, border-color 0.4s;
 }
-
 .nav-logo {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.5rem;
@@ -67,13 +63,11 @@ nav {
   color: var(--text);
   text-decoration: none;
 }
-
 .nav-center {
   display: flex;
   gap: 2.5rem;
   list-style: none;
 }
-
 .nav-center a {
   font-size: 0.58rem;
   letter-spacing: 0.18em;
@@ -82,9 +76,7 @@ nav {
   text-decoration: none;
   transition: color 0.3s;
 }
-
 .nav-center a:hover { color: var(--gold); }
-
 .theme-toggle {
   background: none;
   border: 1px solid var(--border);
@@ -103,7 +95,7 @@ nav {
 }
 .theme-toggle:hover { border-color: var(--gold); color: var(--gold); }
 
-/* ── HERO ── */
+/* HERO */
 .hero {
   height: 100vh;
   position: relative;
@@ -111,7 +103,6 @@ nav {
   display: flex;
   align-items: flex-end;
 }
-
 .hero-img {
   position: absolute;
   inset: 0;
@@ -122,21 +113,17 @@ nav {
   filter: brightness(0.72);
   transition: filter 0.5s;
 }
-
 [data-theme="dark"] .hero-img { filter: brightness(0.45); }
-
 .hero-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 55%);
 }
-
 .hero-content {
   position: relative;
   padding: 0 4rem 7rem;
   max-width: 600px;
 }
-
 .hero-eyebrow {
   font-size: 0.55rem;
   letter-spacing: 0.35em;
@@ -146,7 +133,6 @@ nav {
   opacity: 0;
   animation: fadeUp 1s 0.3s forwards;
 }
-
 .hero-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(3.5rem, 6vw, 5.5rem);
@@ -156,9 +142,7 @@ nav {
   opacity: 0;
   animation: fadeUp 1s 0.5s forwards;
 }
-
 .hero-title em { font-style: italic; color: var(--gold-light); }
-
 .hero-sub {
   margin-top: 1.5rem;
   font-size: 0.72rem;
@@ -168,7 +152,6 @@ nav {
   opacity: 0;
   animation: fadeUp 1s 0.7s forwards;
 }
-
 .hero-cta {
   margin-top: 2.5rem;
   display: inline-block;
@@ -184,7 +167,6 @@ nav {
   transition: color 0.3s;
 }
 .hero-cta:hover { color: var(--gold-light); }
-
 .hero-scroll {
   position: absolute;
   bottom: 3rem;
@@ -200,7 +182,6 @@ nav {
   opacity: 0;
   animation: fadeUp 1s 1.2s forwards;
 }
-
 .scroll-line {
   width: 1px;
   height: 3rem;
@@ -208,19 +189,17 @@ nav {
   animation: scrollPulse 2s ease-in-out infinite;
 }
 
-/* ── MARQUEE ── */
+/* MARQUEE */
 .marquee-wrap {
   background: var(--gold);
   padding: 0.85rem 0;
   overflow: hidden;
   white-space: nowrap;
 }
-
 .marquee-track {
   display: inline-flex;
   animation: marquee 25s linear infinite;
 }
-
 .marquee-item {
   font-size: 0.52rem;
   letter-spacing: 0.25em;
@@ -228,10 +207,9 @@ nav {
   color: rgba(255,255,255,0.82);
   padding: 0 2.5rem;
 }
-
 .marquee-dot { color: rgba(255,255,255,0.38); }
 
-/* ── SECTION LABEL ── */
+/* SECTION LABEL */
 .section-label {
   font-size: 0.5rem;
   letter-spacing: 0.3em;
@@ -251,27 +229,24 @@ nav {
   flex-shrink: 0;
 }
 
-/* ── COLLECTION ── */
+/* COLLECTION */
 .collection {
   padding: 7rem 4rem;
   background: var(--bg);
   transition: background 0.4s;
 }
-
 .collection-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   margin-bottom: 4rem;
 }
-
 .section-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2rem, 3.5vw, 3rem);
   font-weight: 300;
   line-height: 1.1;
 }
-
 .collection-link {
   font-size: 0.55rem;
   letter-spacing: 0.2em;
@@ -283,15 +258,12 @@ nav {
   transition: opacity 0.3s;
 }
 .collection-link:hover { opacity: 0.6; }
-
 .products {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.2rem;
 }
-
 .product-card { cursor: pointer; }
-
 .product-img-wrap {
   position: relative;
   overflow: hidden;
@@ -299,7 +271,6 @@ nav {
   background: var(--card-bg);
   transition: background 0.4s;
 }
-
 .product-img {
   width: 100%;
   height: 100%;
@@ -308,43 +279,38 @@ nav {
   transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
 }
 .product-card:hover .product-img { transform: scale(1.06); }
-
 .product-tag {
   position: absolute;
   top: 1rem;
   left: 1rem;
-  font-size: 0.45rem;
-  letter-spacing: 0.2em;
+  font-size: 0.42rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   background: var(--gold);
   color: #fff;
-  padding: 0.3rem 0.7rem;
+  padding: 0.25rem 0.6rem;
 }
-
 .product-info {
-  padding: 1.2rem 0 0;
+  padding: 1rem 0 0;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
 }
-
 .product-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 300;
 }
-
 .product-type {
-  font-size: 0.48rem;
+  font-size: 0.44rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--text-soft);
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.25rem;
 }
-
 .product-find {
-  font-size: 0.52rem;
-  letter-spacing: 0.2em;
+  font-size: 0.48rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--gold);
   text-decoration: none;
@@ -355,26 +321,23 @@ nav {
 }
 .product-find:hover { opacity: 0.6; }
 
-/* ── SIDUS ── */
+/* SIDUS */
 .sidus {
   padding: 7rem 4rem;
   background: var(--bg2);
   transition: background 0.4s;
 }
-
 .sidus-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 6rem;
   align-items: center;
 }
-
 .sidus-img-wrap {
   position: relative;
   overflow: hidden;
   aspect-ratio: 4/5;
 }
-
 .sidus-img {
   width: 100%;
   height: 100%;
@@ -383,7 +346,6 @@ nav {
   transition: transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
 }
 .sidus-img-wrap:hover .sidus-img { transform: scale(1.04); }
-
 .sidus-badge {
   position: absolute;
   top: 1.5rem;
@@ -397,7 +359,6 @@ nav {
   justify-content: center;
   transition: background 0.4s;
 }
-
 .sidus-badge-text {
   font-size: 0.38rem;
   letter-spacing: 0.15em;
@@ -406,7 +367,6 @@ nav {
   text-align: center;
   line-height: 1.8;
 }
-
 .sidus-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2rem, 3.5vw, 3rem);
@@ -415,7 +375,6 @@ nav {
   margin-bottom: 1.5rem;
 }
 .sidus-title em { font-style: italic; color: var(--gold); }
-
 .sidus-body {
   font-size: 0.72rem;
   line-height: 2.1;
@@ -423,20 +382,17 @@ nav {
   max-width: 400px;
   margin-bottom: 2.5rem;
 }
-
 .sidus-steps {
   display: flex;
   flex-direction: column;
   gap: 1.4rem;
   margin-bottom: 2.5rem;
 }
-
 .sidus-step {
   display: flex;
   align-items: flex-start;
   gap: 1.2rem;
 }
-
 .step-num {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.4rem;
@@ -445,9 +401,7 @@ nav {
   line-height: 1;
   min-width: 2rem;
 }
-
 .step-body { padding-top: 0.1rem; }
-
 .step-title {
   font-size: 0.68rem;
   font-weight: 400;
@@ -455,13 +409,11 @@ nav {
   letter-spacing: 0.04em;
   margin-bottom: 0.2rem;
 }
-
 .step-desc {
   font-size: 0.64rem;
   line-height: 1.8;
   color: var(--text-soft);
 }
-
 .sidus-cta {
   display: inline-block;
   font-size: 0.58rem;
@@ -475,25 +427,22 @@ nav {
 }
 .sidus-cta:hover { color: var(--gold); }
 
-/* ── PARTENAIRES ── */
+/* PARTENAIRES */
 .partenaires {
   background: var(--bg);
   padding: 7rem 4rem;
   transition: background 0.4s;
 }
-
 .partenaires-header {
   text-align: center;
   margin-bottom: 4rem;
 }
-
 .partenaires-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2rem, 3.5vw, 3rem);
   font-weight: 300;
   margin-bottom: 1rem;
 }
-
 .partenaires-sub {
   font-size: 0.68rem;
   color: var(--text-soft);
@@ -501,21 +450,15 @@ nav {
   max-width: 480px;
   margin: 0 auto;
 }
-
-.stores-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-
 .store-card {
   border: 1px solid var(--border);
   padding: 2rem;
   background: var(--bg2);
   transition: border-color 0.3s, background 0.4s;
+  max-width: 400px;
+  width: 100%;
 }
 .store-card:hover { border-color: var(--gold); }
-
 .store-city {
   font-size: 0.46rem;
   letter-spacing: 0.3em;
@@ -523,35 +466,29 @@ nav {
   color: var(--gold);
   margin-bottom: 0.5rem;
 }
-
 .store-name {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.25rem;
   font-weight: 300;
   margin-bottom: 1rem;
 }
-
 .store-divider {
   width: 1.5rem;
   height: 1px;
   background: var(--border);
   margin-bottom: 1rem;
 }
-
 .store-address {
   font-size: 0.62rem;
   line-height: 1.9;
   color: var(--text-soft);
   margin-bottom: 0.6rem;
 }
-
 .store-hours {
   font-size: 0.54rem;
-  letter-spacing: 0.06em;
   color: var(--text-soft);
   margin-bottom: 1.2rem;
 }
-
 .store-link {
   font-size: 0.5rem;
   letter-spacing: 0.2em;
@@ -562,20 +499,18 @@ nav {
 }
 .store-link:hover { opacity: 0.6; }
 
-/* ── COMING SOON ── */
+/* COMING SOON */
 .coming-soon {
   background: var(--bg2);
   padding: 7rem 4rem;
   transition: background 0.4s;
 }
-
 .coming-soon-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 6rem;
   align-items: center;
 }
-
 .cs-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2.2rem, 4vw, 3.5rem);
@@ -584,7 +519,6 @@ nav {
   margin-bottom: 1.5rem;
 }
 .cs-title em { font-style: italic; color: var(--gold); }
-
 .cs-body {
   font-size: 0.72rem;
   line-height: 2;
@@ -592,16 +526,13 @@ nav {
   max-width: 360px;
   margin-bottom: 2.5rem;
 }
-
 .countdown {
   display: flex;
   align-items: flex-start;
   gap: 1.5rem;
   margin-bottom: 2.5rem;
 }
-
 .countdown-block { text-align: center; }
-
 .countdown-num {
   font-family: 'Cormorant Garamond', serif;
   font-size: 2.6rem;
@@ -610,7 +541,6 @@ nav {
   line-height: 1;
   display: block;
 }
-
 .countdown-unit {
   font-size: 0.44rem;
   letter-spacing: 0.2em;
@@ -619,14 +549,12 @@ nav {
   margin-top: 0.4rem;
   display: block;
 }
-
 .countdown-sep {
   font-family: 'Cormorant Garamond', serif;
   font-size: 2.6rem;
   color: var(--border);
   line-height: 1;
 }
-
 .notify-label {
   font-size: 0.52rem;
   letter-spacing: 0.15em;
@@ -634,7 +562,6 @@ nav {
   color: var(--text-soft);
   margin-bottom: 0.8rem;
 }
-
 .notify-form {
   display: flex;
   border-bottom: 1px solid var(--border);
@@ -642,7 +569,6 @@ nav {
   transition: border-color 0.3s;
 }
 .notify-form:focus-within { border-color: var(--gold); }
-
 .notify-input {
   flex: 1;
   background: none;
@@ -655,7 +581,6 @@ nav {
   padding: 0.6rem 0;
 }
 .notify-input::placeholder { color: var(--text-soft); }
-
 .notify-btn {
   background: none;
   border: none;
@@ -669,12 +594,10 @@ nav {
   transition: opacity 0.3s;
 }
 .notify-btn:hover { opacity: 0.6; }
-
 .cs-preview {
   position: relative;
   height: 520px;
 }
-
 .cs-img-main {
   position: absolute;
   right: 0; top: 0;
@@ -683,7 +606,6 @@ nav {
   object-fit: cover;
   filter: blur(9px) brightness(0.65);
 }
-
 .cs-img-small {
   position: absolute;
   left: 0; bottom: 0;
@@ -692,7 +614,6 @@ nav {
   object-fit: cover;
   filter: blur(11px) brightness(0.55);
 }
-
 .cs-lock {
   position: absolute;
   top: 50%;
@@ -701,14 +622,12 @@ nav {
   text-align: center;
   z-index: 2;
 }
-
 .cs-lock-icon {
   font-size: 2rem;
   color: var(--gold);
   margin-bottom: 0.6rem;
   display: block;
 }
-
 .cs-lock-text {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.4rem;
@@ -717,7 +636,6 @@ nav {
   letter-spacing: 0.1em;
   margin-bottom: 0.4rem;
 }
-
 .cs-lock-date {
   font-size: 0.48rem;
   letter-spacing: 0.3em;
@@ -725,18 +643,16 @@ nav {
   color: var(--gold-light);
 }
 
-/* ── ABOUT ── */
+/* ABOUT */
 .about {
   display: grid;
   grid-template-columns: 1fr 1fr;
   min-height: 75vh;
 }
-
 .about-img-wrap {
   position: relative;
   overflow: hidden;
 }
-
 .about-img {
   width: 100%;
   height: 100%;
@@ -745,7 +661,6 @@ nav {
   transition: transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
 }
 .about-img-wrap:hover .about-img { transform: scale(1.04); }
-
 .about-content {
   padding: 6rem 5rem;
   display: flex;
@@ -754,7 +669,6 @@ nav {
   background: var(--bg2);
   transition: background 0.4s;
 }
-
 .about-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(1.8rem, 3vw, 2.8rem);
@@ -763,14 +677,12 @@ nav {
   margin-bottom: 2rem;
 }
 .about-title em { font-style: italic; color: var(--gold); }
-
 .about-body {
   font-size: 0.72rem;
   line-height: 2.2;
   color: var(--text-soft);
   max-width: 380px;
 }
-
 .about-stats {
   margin-top: 3rem;
   display: flex;
@@ -778,7 +690,6 @@ nav {
   padding-top: 2.5rem;
   border-top: 1px solid var(--border);
 }
-
 .stat-num {
   font-family: 'Cormorant Garamond', serif;
   font-size: 2rem;
@@ -788,7 +699,6 @@ nav {
   line-height: 1;
   margin-bottom: 0.4rem;
 }
-
 .stat-label {
   font-size: 0.48rem;
   letter-spacing: 0.2em;
@@ -796,14 +706,13 @@ nav {
   color: var(--text-soft);
 }
 
-/* ── QUOTE ── */
+/* QUOTE */
 .quote-section {
   padding: 7rem 4rem;
   text-align: center;
   background: var(--bg);
   transition: background 0.4s;
 }
-
 .quote-text {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(1.6rem, 3vw, 2.8rem);
@@ -816,7 +725,6 @@ nav {
 }
 .quote-text::before { content: '\201C'; color: var(--gold); }
 .quote-text::after  { content: '\201D'; color: var(--gold); }
-
 .quote-author {
   font-size: 0.52rem;
   letter-spacing: 0.3em;
@@ -824,21 +732,19 @@ nav {
   color: var(--text-soft);
 }
 
-/* ── FOOTER ── */
+/* FOOTER */
 footer {
   border-top: 1px solid var(--border);
   padding: 4rem 4rem 2.5rem;
   background: var(--bg);
   transition: all 0.4s;
 }
-
 .footer-top {
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr;
   gap: 4rem;
   margin-bottom: 4rem;
 }
-
 .footer-brand {
   font-family: 'Cormorant Garamond', serif;
   font-size: 2rem;
@@ -846,7 +752,6 @@ footer {
   letter-spacing: 0.25em;
   margin-bottom: 0.7rem;
 }
-
 .footer-tagline {
   font-size: 0.55rem;
   letter-spacing: 0.15em;
@@ -854,14 +759,11 @@ footer {
   color: var(--text-soft);
   margin-bottom: 1.5rem;
 }
-
 .footer-addr {
   font-size: 0.62rem;
   line-height: 1.9;
   color: var(--text-soft);
-  max-width: 240px;
 }
-
 .footer-col-title {
   font-size: 0.48rem;
   letter-spacing: 0.25em;
@@ -869,7 +771,6 @@ footer {
   color: var(--gold);
   margin-bottom: 1.5rem;
 }
-
 .footer-links { list-style: none; }
 .footer-links li { margin-bottom: 0.75rem; }
 .footer-links a {
@@ -880,14 +781,12 @@ footer {
   transition: color 0.3s;
 }
 .footer-links a:hover { color: var(--gold); }
-
 .footer-bottom {
   border-top: 1px solid var(--border);
   padding-top: 2rem;
   display: flex;
   justify-content: space-between;
 }
-
 .footer-copy {
   font-size: 0.48rem;
   letter-spacing: 0.1em;
@@ -895,22 +794,19 @@ footer {
   color: var(--text-soft);
 }
 
-/* ── ANIMATIONS ── */
+/* ANIMATIONS */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(18px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
-
 @keyframes scrollPulse {
   0%, 100% { opacity: 0.35; }
   50%       { opacity: 1; }
 }
-
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -921,7 +817,9 @@ footer {
   transform: translateY(0);
 }
 
-/* ── MOBILE ── */
+@media (max-width: 900px) {
+  .products { grid-template-columns: repeat(3, 1fr); }
+}
 @media (max-width: 768px) {
   nav { padding: 1.2rem 1.5rem; }
   .nav-center { display: none; }
@@ -929,11 +827,10 @@ footer {
   .about { grid-template-columns: 1fr; }
   .about-img-wrap { min-height: 50vw; }
   .about-content { padding: 3rem 1.5rem; }
-  .products { grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .products { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
   .sidus-inner { grid-template-columns: 1fr; gap: 3rem; }
   .coming-soon-inner { grid-template-columns: 1fr; }
   .cs-preview { height: 280px; }
-  .stores-grid { grid-template-columns: 1fr; }
   .collection, .sidus, .partenaires, .coming-soon, .quote-section { padding: 4rem 1.5rem; }
   .footer-top { grid-template-columns: 1fr; gap: 2rem; }
   footer { padding: 3rem 1.5rem 2rem; }
@@ -949,11 +846,11 @@ footer {
     <li><a href="#collection">Collection</a></li>
     <li><a href="#sidus">Sidus</a></li>
     <li><a href="#prochaine">Prochaine</a></li>
-    <li><a href="#partenaires">Où nous trouver</a></li>
+    <li><a href="#partenaires">Nous trouver</a></li>
     <li><a href="#about">Maison</a></li>
   </ul>
   <button class="theme-toggle" id="themeToggle">
-    <span id="toggleIcon">☽</span>
+    <span id="toggleIcon">&#9789;</span>
     <span id="toggleLabel">Nuit</span>
   </button>
 </nav>
@@ -965,87 +862,118 @@ footer {
     alt="NOVA Bijoux" />
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Maison NOVA · Paris · Depuis 2018</p>
-    <h1 class="hero-title">L'essentiel,<br><em>sublimé.</em></h1>
-    <p class="hero-sub">Des bijoux conçus pour durer. Taillés dans l'or, forgés dans le silence, portés pour toujours.</p>
-    <a href="#collection" class="hero-cta">Découvrir la collection</a>
+    <p class="hero-eyebrow">Maison NOVA &middot; Paris &middot; Depuis 2018</p>
+    <h1 class="hero-title">L'essentiel,<br><em>sublim&eacute;.</em></h1>
+    <p class="hero-sub">Des bijoux con&ccedil;us pour durer. Taill&eacute;s dans l'or, forg&eacute;s dans le silence, port&eacute;s pour toujours.</p>
+    <a href="#collection" class="hero-cta">D&eacute;couvrir la collection</a>
   </div>
   <div class="hero-scroll">
     <div class="scroll-line"></div>
-    <span>Défiler</span>
+    <span>D&eacute;filer</span>
   </div>
 </section>
 
 <!-- MARQUEE -->
 <div class="marquee-wrap">
   <div class="marquee-track">
-    <span class="marquee-item">Or 18 carats</span><span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">Artisanat Parisien</span><span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">Pierres naturelles</span><span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">Pièces Uniques</span><span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">Livraison mondiale</span><span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">Or 18 carats</span><span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">Artisanat Parisien</span><span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">Pierres naturelles</span><span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">Pièces Uniques</span><span class="marquee-item marquee-dot">·</span>
-    <span class="marquee-item">Livraison mondiale</span><span class="marquee-item marquee-dot">·</span>
+    <span class="marquee-item">Or 18 carats</span><span class="marquee-item marquee-dot">&middot;</span>
+    <span class="marquee-item">Artisanat Parisien</span><span class="marquee-item marquee-dot">&middot;</span>
+    <span class="marquee-item">Pierres naturelles</span><span class="marquee-item marquee-dot">&middot;</span>
+    <span class="marquee-item">Pi&egrave;ces Uniques</span><span class="marquee-item marquee-dot">&middot;</span>
+    <span class="marquee-item">Livraison mondiale</span><span class="marquee-item marquee-dot">&middot;</span>
+    <span class="marquee-item">Or 18 carats</span><span class="marquee-item marquee-dot">&middot;</span>
+    <span class="marquee-item">Artisanat Parisien</span><span class="marquee-item marquee-dot">&middot;</span>
+    <span class="marquee-item">Pierres naturelles</span><span class="marquee-item marquee-dot">&middot;</span>
+    <span class="marquee-item">Pi&egrave;ces Uniques</span><span class="marquee-item marquee-dot">&middot;</span>
+    <span class="marquee-item">Livraison mondiale</span><span class="marquee-item marquee-dot">&middot;</span>
   </div>
 </div>
 
-<!-- COLLECTION -->
+<!-- COLLECTION CÉLESTE -->
 <section class="collection" id="collection">
   <div class="collection-header reveal">
     <div>
       <span class="section-label">Collection 2025</span>
-      <h2 class="section-title">Céleste</h2>
+      <h2 class="section-title">C&eacute;leste</h2>
     </div>
     <a href="#partenaires" class="collection-link">Trouver en boutique</a>
   </div>
+
   <div class="products">
 
-    <div class="product-card reveal">
+    <div class="product-card reveal" style="transition-delay:0s">
       <div class="product-img-wrap">
         <img class="product-img"
           src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&auto=format&fit=crop&q=80"
-          alt="Bague Étoile Solitaire" />
+          alt="Bague Vega" />
         <span class="product-tag">Nouveau</span>
       </div>
       <div class="product-info">
         <div>
           <p class="product-type">Bague</p>
-          <h3 class="product-name">Étoile Solitaire</h3>
+          <h3 class="product-name">V&eacute;ga</h3>
         </div>
-        <a href="#partenaires" class="product-find">Trouver →</a>
+        <a href="#partenaires" class="product-find">Trouver</a>
       </div>
     </div>
 
-    <div class="product-card reveal" style="transition-delay:.1s">
+    <div class="product-card reveal" style="transition-delay:0.07s">
       <div class="product-img-wrap">
         <img class="product-img"
-          src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&auto=format&fit=crop&q=80"
-          alt="Collier Lune d'Albâtre" />
+          src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&auto=format&fit=crop&q=80"
+          alt="Bague Lyra" />
       </div>
       <div class="product-info">
         <div>
-          <p class="product-type">Collier</p>
-          <h3 class="product-name">Lune d'Albâtre</h3>
+          <p class="product-type">Bague</p>
+          <h3 class="product-name">Lyra</h3>
         </div>
-        <a href="#partenaires" class="product-find">Trouver →</a>
+        <a href="#partenaires" class="product-find">Trouver</a>
       </div>
     </div>
 
-    <div class="product-card reveal" style="transition-delay:.2s">
+    <div class="product-card reveal" style="transition-delay:0.14s">
       <div class="product-img-wrap">
         <img class="product-img"
           src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=800&auto=format&fit=crop&q=80"
-          alt="Bracelet Solstice d'Or" />
+          alt="Bague Cassiopee" />
       </div>
       <div class="product-info">
         <div>
-          <p class="product-type">Bracelet</p>
-          <h3 class="product-name">Solstice d'Or</h3>
+          <p class="product-type">Bague</p>
+          <h3 class="product-name">Cassiop&eacute;e</h3>
         </div>
-        <a href="#partenaires" class="product-find">Trouver →</a>
+        <a href="#partenaires" class="product-find">Trouver</a>
+      </div>
+    </div>
+
+    <div class="product-card reveal" style="transition-delay:0.21s">
+      <div class="product-img-wrap">
+        <img class="product-img"
+          src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=800&auto=format&fit=crop&q=80"
+          alt="Bague Selene" />
+      </div>
+      <div class="product-info">
+        <div>
+          <p class="product-type">Bague</p>
+          <h3 class="product-name">S&eacute;l&eacute;n&eacute;</h3>
+        </div>
+        <a href="#partenaires" class="product-find">Trouver</a>
+      </div>
+    </div>
+
+    <div class="product-card reveal" style="transition-delay:0.28s">
+      <div class="product-img-wrap">
+        <img class="product-img"
+          src="https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=800&auto=format&fit=crop&q=80"
+          alt="Bague Orion" />
+      </div>
+      <div class="product-info">
+        <div>
+          <p class="product-type">Bague</p>
+          <h3 class="product-name">Orion</h3>
+        </div>
+        <a href="#partenaires" class="product-find">Trouver</a>
       </div>
     </div>
 
@@ -1058,35 +986,35 @@ footer {
     <div class="sidus-img-wrap reveal">
       <img class="sidus-img"
         src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=900&auto=format&fit=crop&q=80"
-        alt="Série Sidus — bagues personnalisées NOVA" />
+        alt="Serie Sidus" />
       <div class="sidus-badge">
         <span class="sidus-badge-text">Sur<br>mesure</span>
       </div>
     </div>
-    <div class="reveal" style="transition-delay:.1s">
-      <span class="section-label">Série exclusive</span>
-      <h2 class="sidus-title">Sidus —<br><em>Votre bague,<br>votre signature.</em></h2>
-      <p class="sidus-body">La série Sidus est née d'un désir simple : que chaque bague raconte une histoire unique. Gravure, pierre de naissance, initiales, date — chaque détail est choisi par vous, façonné à la main par nos orfèvres parisiens en or 18 carats.</p>
+    <div class="reveal" style="transition-delay:0.1s">
+      <span class="section-label">S&eacute;rie exclusive</span>
+      <h2 class="sidus-title">Sidus &mdash;<br><em>Votre bague,<br>votre signature.</em></h2>
+      <p class="sidus-body">La s&eacute;rie Sidus est n&eacute;e d'un d&eacute;sir simple : que chaque bague raconte une histoire unique. Gravure, pierre de naissance, initiales, date &mdash; chaque d&eacute;tail est choisi par vous, fa&ccedil;onn&eacute; &agrave; la main par nos orf&egrave;vres parisiens en or 18 carats.</p>
       <div class="sidus-steps">
         <div class="sidus-step">
           <span class="step-num">01</span>
           <div class="step-body">
-            <p class="step-title">Choisir votre modèle</p>
-            <p class="step-desc">Anneau fin, jonc large ou chevalière — trois silhouettes au choix.</p>
+            <p class="step-title">Choisir votre mod&egrave;le</p>
+            <p class="step-desc">Anneau fin, jonc large ou chevalit&egrave;re &mdash; trois silhouettes au choix.</p>
           </div>
         </div>
         <div class="sidus-step">
           <span class="step-num">02</span>
           <div class="step-body">
             <p class="step-title">Personnaliser</p>
-            <p class="step-desc">Pierre, gravure, finition mate ou polie, métal blanc ou jaune.</p>
+            <p class="step-desc">Pierre, gravure, finition mate ou polie, m&eacute;tal blanc ou jaune.</p>
           </div>
         </div>
         <div class="sidus-step">
           <span class="step-num">03</span>
           <div class="step-body">
-            <p class="step-title">Recevoir votre création</p>
-            <p class="step-desc">Façonnée en 4 à 6 semaines, livrée dans son écrin NOVA.</p>
+            <p class="step-title">Recevoir votre cr&eacute;ation</p>
+            <p class="step-desc">Fa&ccedil;onn&eacute;e en 4 &agrave; 6 semaines, livr&eacute;e dans son &eacute;crin NOVA.</p>
           </div>
         </div>
       </div>
@@ -1098,66 +1026,19 @@ footer {
 <!-- PARTENAIRES -->
 <section class="partenaires" id="partenaires">
   <div class="partenaires-header reveal">
-    <span class="section-label" style="justify-content:center;">Où nous trouver</span>
-    <h2 class="partenaires-title">Nos boutiques partenaires</h2>
-    <p class="partenaires-sub">Les créations NOVA ne sont pas disponibles en ligne. Découvrez-les dans nos boutiques partenaires, sélectionnées pour leur exigence et leur sens du détail.</p>
+    <span class="section-label" style="justify-content:center;">O&ugrave; nous trouver</span>
+    <h2 class="partenaires-title">Notre boutique partenaire</h2>
+    <p class="partenaires-sub">Les cr&eacute;ations NOVA ne sont pas disponibles en ligne. Retrouvez-les exclusivement chez notre boutique partenaire, s&eacute;lectionn&eacute;e pour son univers et son savoir-faire.</p>
   </div>
-  <div class="stores-grid">
-
+  <div style="display:flex; justify-content:center;">
     <div class="store-card reveal">
-      <p class="store-city">Paris — 1er</p>
-      <h3 class="store-name">Maison Morel</h3>
+      <p class="store-city">Argence</p>
+      <h3 class="store-name">Emilie Nail Fairy</h3>
       <div class="store-divider"></div>
-      <p class="store-address">24 Place Vendôme<br>75001 Paris</p>
-      <p class="store-hours">Lun – Sam · 10h30 – 19h</p>
-      <a href="#" class="store-link">Voir la boutique →</a>
+      <p class="store-address">Argence, France</p>
+      <p class="store-hours">Contactez la boutique pour les horaires</p>
+      <a href="https://www.instagram.com/emilie_nail_fairy" target="_blank" class="store-link">Voir sur Instagram &rarr;</a>
     </div>
-
-    <div class="store-card reveal" style="transition-delay:.07s">
-      <p class="store-city">Paris — 6e</p>
-      <h3 class="store-name">Atelier Saint-Germain</h3>
-      <div class="store-divider"></div>
-      <p class="store-address">12 Rue de Buci<br>75006 Paris</p>
-      <p class="store-hours">Mar – Sam · 11h – 19h30</p>
-      <a href="#" class="store-link">Voir la boutique →</a>
-    </div>
-
-    <div class="store-card reveal" style="transition-delay:.14s">
-      <p class="store-city">Lyon</p>
-      <h3 class="store-name">Or & Sens</h3>
-      <div class="store-divider"></div>
-      <p class="store-address">8 Rue du Président Herriot<br>69001 Lyon</p>
-      <p class="store-hours">Mar – Sam · 10h – 18h30</p>
-      <a href="#" class="store-link">Voir la boutique →</a>
-    </div>
-
-    <div class="store-card reveal" style="transition-delay:.07s">
-      <p class="store-city">Bordeaux</p>
-      <h3 class="store-name">L'Écrin Bordelais</h3>
-      <div class="store-divider"></div>
-      <p class="store-address">5 Allées de Tourny<br>33000 Bordeaux</p>
-      <p class="store-hours">Lun – Sam · 10h – 19h</p>
-      <a href="#" class="store-link">Voir la boutique →</a>
-    </div>
-
-    <div class="store-card reveal" style="transition-delay:.14s">
-      <p class="store-city">Bruxelles</p>
-      <h3 class="store-name">Galerie Delvaux</h3>
-      <div class="store-divider"></div>
-      <p class="store-address">27 Boulevard de Waterloo<br>1000 Bruxelles</p>
-      <p class="store-hours">Mar – Sam · 10h – 18h</p>
-      <a href="#" class="store-link">Voir la boutique →</a>
-    </div>
-
-    <div class="store-card reveal" style="transition-delay:.21s">
-      <p class="store-city">Genève</p>
-      <h3 class="store-name">Bijoux de la Rive</h3>
-      <div class="store-divider"></div>
-      <p class="store-address">14 Rue du Rhône<br>1204 Genève</p>
-      <p class="store-hours">Lun – Sam · 9h30 – 18h30</p>
-      <a href="#" class="store-link">Voir la boutique →</a>
-    </div>
-
   </div>
 </section>
 
@@ -1166,8 +1047,8 @@ footer {
   <div class="coming-soon-inner">
     <div class="reveal">
       <span class="section-label">Prochaine collection</span>
-      <h2 class="cs-title"><em>Aurore</em><br>arrive bientôt.</h2>
-      <p class="cs-body">Notre prochaine collection s'inspire de la lumière à l'aube — entre ombre et clarté. Une série de 12 pièces exclusives, réalisées à la main dans notre atelier parisien.</p>
+      <h2 class="cs-title"><em>Aurore</em><br>arrive bient&ocirc;t.</h2>
+      <p class="cs-body">Notre prochaine collection s'inspire de la lumi&egrave;re &agrave; l'aube &mdash; entre ombre et clart&eacute;. Une s&eacute;rie de 12 pi&egrave;ces exclusives, r&eacute;alis&eacute;es &agrave; la main dans notre atelier parisien.</p>
       <div class="countdown">
         <div class="countdown-block">
           <span class="countdown-num" id="cd-days">--</span>
@@ -1189,21 +1070,21 @@ footer {
           <span class="countdown-unit">Sec</span>
         </div>
       </div>
-      <p class="notify-label">Être informé en avant-première</p>
+      <p class="notify-label">&Ecirc;tre inform&eacute; en avant-premi&egrave;re</p>
       <div class="notify-form">
         <input class="notify-input" type="email" placeholder="Votre adresse e-mail" />
-        <button class="notify-btn" id="notifyBtn">Notifier →</button>
+        <button class="notify-btn" id="notifyBtn">Notifier &rarr;</button>
       </div>
     </div>
-    <div class="cs-preview reveal" style="transition-delay:.15s">
+    <div class="cs-preview reveal" style="transition-delay:0.15s">
       <img class="cs-img-main"
         src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&auto=format&fit=crop&q=80"
-        alt="Aperçu Aurore" />
+        alt="Apercu Aurore" />
       <img class="cs-img-small"
         src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&auto=format&fit=crop&q=80"
-        alt="Aperçu Aurore 2" />
+        alt="Apercu Aurore 2" />
       <div class="cs-lock">
-        <span class="cs-lock-icon">◈</span>
+        <span class="cs-lock-icon">&#9672;</span>
         <div class="cs-lock-text">Collection Aurore</div>
         <div class="cs-lock-date">Automne 2025</div>
       </div>
@@ -1220,12 +1101,12 @@ footer {
   </div>
   <div class="about-content reveal">
     <span class="section-label">Notre Maison</span>
-    <h2 class="about-title">Née d'une passion<br>pour l'<em>essentiel.</em></h2>
-    <p class="about-body">NOVA est une maison de bijoux indépendante fondée à Paris. Chaque création est pensée comme un objet de transmission — sobre, durable, porteur d'une lumière propre. Nous travaillons en petite série avec des orfèvres sélectionnés pour leur rigueur et leur sensibilité.</p>
+    <h2 class="about-title">N&eacute;e d'une passion<br>pour l'<em>essentiel.</em></h2>
+    <p class="about-body">NOVA est une maison de bijoux ind&eacute;pendante fond&eacute;e &agrave; Paris. Chaque cr&eacute;ation est pens&eacute;e comme un objet de transmission &mdash; sobre, durable, porteur d'une lumi&egrave;re propre. Nous travaillons en petite s&eacute;rie avec des orf&egrave;vres s&eacute;lectionn&eacute;s pour leur rigueur et leur sensibilit&eacute;.</p>
     <div class="about-stats">
       <div>
         <span class="stat-num">18k</span>
-        <span class="stat-label">Or certifié</span>
+        <span class="stat-label">Or certifi&eacute;</span>
       </div>
       <div>
         <span class="stat-num">7</span>
@@ -1242,7 +1123,7 @@ footer {
 <!-- QUOTE -->
 <section class="quote-section">
   <p class="quote-text reveal">Porter un bijou NOVA, c'est choisir l'essentiel contre le superflu.</p>
-  <span class="quote-author reveal" style="transition-delay:.1s">NOVA — Maison de Bijoux, Paris</span>
+  <span class="quote-author reveal" style="transition-delay:0.1s">NOVA &mdash; Maison de Bijoux, Paris</span>
 </section>
 
 <!-- FOOTER -->
@@ -1250,87 +1131,75 @@ footer {
   <div class="footer-top">
     <div>
       <div class="footer-brand">NOVA</div>
-      <p class="footer-tagline">Maison de bijoux · Paris</p>
-      <p class="footer-addr">12 Rue de la Paix, 75002 Paris<br>Mar – Sam, 10h – 19h</p>
+      <p class="footer-tagline">Maison de bijoux &middot; Paris</p>
+      <p class="footer-addr">Paris, France<br>contact@nova-bijoux.fr</p>
     </div>
     <div>
       <p class="footer-col-title">Navigation</p>
       <ul class="footer-links">
-        <li><a href="#collection">Collection Céleste</a></li>
-        <li><a href="#sidus">Série Sidus</a></li>
+        <li><a href="#collection">Collection C&eacute;leste</a></li>
+        <li><a href="#sidus">S&eacute;rie Sidus</a></li>
         <li><a href="#prochaine">Collection Aurore</a></li>
-        <li><a href="#partenaires">Nos boutiques</a></li>
+        <li><a href="#partenaires">O&ugrave; nous trouver</a></li>
         <li><a href="#about">La Maison</a></li>
       </ul>
     </div>
     <div>
-      <p class="footer-col-title">Contact</p>
+      <p class="footer-col-title">Boutique partenaire</p>
       <ul class="footer-links">
+        <li><a href="#partenaires">Emilie Nail Fairy &mdash; Argence</a></li>
         <li><a href="mailto:contact@nova-bijoux.fr">contact@nova-bijoux.fr</a></li>
-        <li><a href="#">+33 1 42 00 00 00</a></li>
-        <li><a href="#partenaires">Boutiques partenaires</a></li>
         <li><a href="#">Instagram</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <span class="footer-copy">© 2025 NOVA. Tous droits réservés.</span>
-    <span class="footer-copy">Fait avec soin — Paris, France</span>
+    <span class="footer-copy">&copy; 2025 NOVA. Tous droits r&eacute;serv&eacute;s.</span>
+    <span class="footer-copy">Fait avec soin &mdash; Paris, France</span>
   </div>
 </footer>
 
 <script>
   // THEME TOGGLE
-  const html = document.documentElement;
-  const btn = document.getElementById('themeToggle');
-  const icon = document.getElementById('toggleIcon');
-  const lbl = document.getElementById('toggleLabel');
-
+  var html = document.documentElement;
+  var btn  = document.getElementById('themeToggle');
+  var icon = document.getElementById('toggleIcon');
+  var lbl  = document.getElementById('toggleLabel');
   btn.addEventListener('click', function() {
-    var isDark = html.getAttribute('data-theme') === 'dark';
-    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
-    icon.textContent = isDark ? '☽' : '☀';
-    lbl.textContent  = isDark ? 'Nuit' : 'Jour';
+    var dark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', dark ? 'light' : 'dark');
+    icon.textContent = dark ? '\u263D' : '\u2600';
+    lbl.textContent  = dark ? 'Nuit' : 'Jour';
   });
 
   // SCROLL REVEAL
-  var observer = new IntersectionObserver(function(entries) {
+  var obs = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) {
       if (e.isIntersecting) e.target.classList.add('visible');
     });
   }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
 
-  document.querySelectorAll('.reveal').forEach(function(el) {
-    observer.observe(el);
-  });
-
-  // COUNTDOWN — cible : 1er octobre 2025
+  // COUNTDOWN
   var target = new Date('2025-10-01T00:00:00').getTime();
-
+  function pad(n) { return String(Math.max(0,n)).padStart(2,'0'); }
   function tick() {
     var diff = target - Date.now();
-    var pad = function(n) { return String(Math.max(0, n)).padStart(2, '0'); };
-    if (diff <= 0) {
-      ['cd-days','cd-hours','cd-min','cd-sec'].forEach(function(id) {
-        document.getElementById(id).textContent = '00';
-      });
-      return;
-    }
+    if (diff <= 0) { diff = 0; }
     document.getElementById('cd-days').textContent  = pad(Math.floor(diff / 86400000));
     document.getElementById('cd-hours').textContent = pad(Math.floor(diff % 86400000 / 3600000));
     document.getElementById('cd-min').textContent   = pad(Math.floor(diff % 3600000 / 60000));
     document.getElementById('cd-sec').textContent   = pad(Math.floor(diff % 60000 / 1000));
   }
-
   tick();
   setInterval(tick, 1000);
 
   // NOTIFY
   document.getElementById('notifyBtn').addEventListener('click', function() {
-    var input = document.querySelector('.notify-input');
-    if (input.value && input.value.indexOf('@') > -1) {
-      input.value = '';
-      input.placeholder = 'Merci ! Vous serez informé en avant-première.';
+    var inp = document.querySelector('.notify-input');
+    if (inp.value && inp.value.indexOf('@') > -1) {
+      inp.value = '';
+      inp.placeholder = 'Merci ! Vous serez inform\u00e9 en avant-premi\u00e8re.';
     }
   });
 </script>
